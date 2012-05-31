@@ -4,7 +4,9 @@ class CustomHelper extends Helper {
 	public $helpers = array(
 		'Html',
 		'Layout',
+    'Form'
 	);
+
 	//Have to subvert the default Croogo menuing to work with bootstrap
 	public function nestedLinks( $links, $options = array( ), $depth = 1 ) {
 
@@ -73,5 +75,55 @@ class CustomHelper extends Helper {
 
 		return $output;
 	}
+
+  /**
+   * @param $name  string form field name, what Form->input would accept
+   * @param array $options array options
+   * @return string form input html
+   */
+  public function input($name,$options = array()) {
+    $template_cg = '<div class="control-group">%s%s</div>'; // label and cs
+    $template_cs = '<div class="controls">%s%s</div>'; // input and help
+    $label = '';
+    if ( isset($options['label'])  ) {
+      if ( $options['label'] !== false ) {
+        $label = $this->Form->label($name,$options['label'],$options);
+      }
+    } else {
+      $label = $this->Form->label($name);
+    }
+
+    $input = $this->Form->input($name,array_merge($options,array('label'=>false)));
+    if ( isset($options['input-prepend']) ) {
+      $input = sprintf('<div class="input-prepend"><span class="add-on">%s</span>%s</div>',$options['input-prepend'],$input);
+    } else if (isset($options['input-append']) ) {
+      $input = sprintf('<div class="input-append">%s<span class="add-on">%s</span>%s</div>',$input,$options['input-append']);
+    }
+    $help = '';
+    if ( isset($options['help']) && !empty($options['help']) ) {
+      $help = sprintf('<p class="help-block">%s</p>',$options['help']);
+    }
+    return sprintf($template_cg,$label,sprintf($template_cs,$input,$help));
+  }
+
+  /**
+   * @param $label string button label
+   * @param $url mixed CakePHP url
+   * @param array $options options
+   * @return string
+   */
+  public function button($label,$url,$options=array()) {
+    if ( isset($options['icon']) ) {
+      $label = sprintf('<i class="icon-%s"></i> %s',$options['icon'],$label);
+      $options['escape'] = false;
+    }
+    if ( isset($options['class']) ) {
+      $options['class'] = sprintf("btn %s",$options['class']);
+    } else {
+      $options['class'] = 'btn';
+    }
+
+    return $this->Html->link($label,$url,$options);
+  }
 
 }
