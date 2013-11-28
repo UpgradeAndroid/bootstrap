@@ -4,7 +4,7 @@
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/"><?php echo Configure::read('Site.title'); ?></a>
+          <a class="brand" href="<?php echo $this->webroot ?>"><?php echo Configure::read('Site.title'); ?></a>
           <div class="nav-collapse">
           	<?php
           		echo $this->Layout->menu('main', array('dropdown'=>true, 'dropdownClass'=>'nav'));
