@@ -15,7 +15,7 @@
 					<div class="control-group remove-margins">
 						<div class="controls">
 							<div class="input-append">
-								<input class="span2" name="q" id="iconInput" type="text" />
+								<input class="span2" name="q" id="q" type="text" />
 								<span class="add-on" onclick="jQuery('#searchform').submit();"><i class="icon-search"></i></span>
 							</div>
 						</div>
