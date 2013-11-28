@@ -2,9 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title><?php echo $title_for_layout; ?> &raquo; <?php echo Configure::read( 'Site.title' ); ?></title>
+		<title><?php echo $title_for_layout . ' &raquo; ' . Configure::read( 'Site.title' ); ?></title>
 		<?php
 		echo $this->Layout->meta();
+		echo $this->Layout->feed();
 		echo $this->Html->css( array(
 			'bootstrap',
 			'theme',
