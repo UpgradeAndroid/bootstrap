@@ -27,7 +27,7 @@
 		<div class="container">
 
 			<?php
-			if( $this->here == '/' ) {
+			if( $this->here == $this->webroot ) {
 				//Home page layout
 				?>
 				<!-- Main hero unit for a primary marketing message or call to action -->
