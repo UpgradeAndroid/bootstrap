@@ -54,7 +54,7 @@ class CustomHelper extends Helper {
 				$linkAttr[ 'class' ] .= ' dropdown-toggle';
 				$linkAttr[ 'data-toggle' ] = 'dropdown';
 				$linkOutput = $this->Html->link( $link[ 'Link' ][ 'title' ] . ' <b class="caret"></b>', $link[ 'Link' ][ 'link' ], $linkAttr );
-				$linkOutput .= $this->nestedLinks( $link[ 'children' ], $options, $depth + 1, $layout, $html );
+				$linkOutput .= $this->nestedLinks( $link[ 'children' ], $options, $depth + 1);
 				$parentTag = 'dropdown';
 			} else {
 				$linkOutput = $this->Html->link( $link[ 'Link' ][ 'title' ], $link[ 'Link' ][ 'link' ], $linkAttr );
